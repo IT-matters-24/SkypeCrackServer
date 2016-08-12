@@ -6,9 +6,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by Administrator on 2016/8/7.
@@ -21,22 +23,30 @@ public class MsgController {
     @Autowired
     private MsgService msgService;
 
-    @RequestMapping(value = "/dealMsg2.do")
-    public @ResponseBody String dealMsg(MessageBean bean) {
+    @RequestMapping(value = "/dealMsg2")
+    public ModelAndView  dealMsg(@ModelAttribute MessageBean bean) {
 
         logger.debug("id111: " + bean.getId());
         logger.debug("body_xml: " + bean.getBody_xml());
         //System.out.println();
         // return msgService.dealMsg(bean);
-        return "OK";
+        ModelAndView mav=new ModelAndView();
+        mav.setViewName("connect");
+        mav.addObject("bean",bean);
+        return mav;
+        //XmlWebApplicationContext
     }
 
-    @RequestMapping(value = "/dealMsg1.do")
-    public @ResponseBody String dealMsg2(@RequestBody MessageBean bean) {
+    @RequestMapping(value = "/insertMsg")
+    public @ResponseBody String insertMsg(@RequestBody MessageBean bean) {
         logger.debug("id: " + bean.getId());
         logger.debug("body_xml: " + bean.getBody_xml());
        // System.out.println(Charset.defaultCharset());
         // return msgService.dealMsg(bean);
+
         return "OK";
     }
+
+
+
 }

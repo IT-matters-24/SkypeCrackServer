@@ -9,7 +9,7 @@
 	</head>
 	<body>
 this is  test for two post methods
-		<form action="/dealMsg2.do" method="POST" accept-charset="utf-8">
+		<form action="/dealMsg2.do" method="post" accept-charset="utf-8">
 			id：
 			<input type="text" name="id" id="jenis">
 			<br>

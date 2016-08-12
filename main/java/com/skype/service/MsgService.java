@@ -14,7 +14,9 @@ public class MsgService {
     private MsgDao msgDao;
 
 
-    public String dealMsg(MessageBean bean){
-        return msgDao.dealMsg(bean);
+    public void insertMsg(MessageBean bean){
+         msgDao.insertMsg(bean);
     }
+
+
 }
